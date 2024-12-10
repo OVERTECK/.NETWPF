@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\17a30a6bf4add77ac76f83b247bd9922.w700h700.jpeg" />
+    <None Remove="Resources\2355319_51712017.jpeg" />
+    <None Remove="Resources\4b06ee9a489cebf9ef15956b12787717.jpg" />
+    <None Remove="Resources\cheese_1.jpg" />
+    <None Remove="Resources\cheese_2.jpeg" />
+    <None Remove="Resources\cheese_3.jpeg" />
+    <None Remove="Resources\e852b61256a784e57ea92105b1355131.jpg" />
+    <None Remove="Resources\napitok-ovsyanyy.jpg" />
+    <None Remove="Resources\Nemoloko_1L.jpg" />
+    <None Remove="Resources\no_images.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\17a30a6bf4add77ac76f83b247bd9922.w700h700.jpeg" />
+    <Resource Include="Resources\2355319_51712017.jpeg" />
+    <Resource Include="Resources\4b06ee9a489cebf9ef15956b12787717.jpg" />
+    <Resource Include="Resources\cheese_1.jpg" />
+    <Resource Include="Resources\cheese_2.jpeg" />
+    <Resource Include="Resources\cheese_3.jpeg" />
+    <Resource Include="Resources\e852b61256a784e57ea92105b1355131.jpg" />
+    <Resource Include="Resources\napitok-ovsyanyy.jpg" />
+    <Resource Include="Resources\Nemoloko_1L.jpg" />
+    <Resource Include="Resources\no_images.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

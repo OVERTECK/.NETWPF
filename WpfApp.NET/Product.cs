@@ -13,5 +13,7 @@ public partial class Product
 
     public string? TitlePath { get; set; }
 
+    public byte[]? Image { get; set; }
+
     public virtual Category Categories { get; set; } = null!;
 }

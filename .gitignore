@@ -3,3 +3,6 @@ TestSolve/
 bin/
 WPF-Sample/
 packages/
+.idea
+obj/
+sln/

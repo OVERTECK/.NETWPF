@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -49,9 +51,28 @@ namespace Pract_3
                     .Select(c => c.Id)
                     .First();
 
+                var pathToFile = TextBlockOpenFileDialog.Text;
+
+                var binaryImage = new byte[0];
+
+                if (pathToFile != "")
+                {
+                    binaryImage = File.ReadAllBytes(pathToFile);
+                } else
+                {
+                    binaryImage = null;
+                }
+
+
                 Db1Context.GetContext()
                     .Products
-                    .Add(new Product { Title = productTitle, CategoriesId = categoriesId });
+                    .Add(new Product
+                    {
+                        Title = productTitle,
+                        CategoriesId = categoriesId,
+                        TitlePath = null,
+                        Image = binaryImage
+                    });
 
                 Db1Context.GetContext().SaveChanges();
 
@@ -66,6 +87,20 @@ namespace Pract_3
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var fileDialog = new OpenFileDialog();
+
+            fileDialog.Filter = "Image file (*.png; *.jpeg; *.jpg) | *.png;*.jpeg;*.jpg";
+
+            if (fileDialog.ShowDialog() == true)
+            {
+                var fileName = fileDialog.FileName;
+
+                TextBlockOpenFileDialog.Text = fileName;
             }
         }
     }

@@ -52,11 +52,12 @@ CREATE TABLE `product` (
   `title` varchar(200) NOT NULL,
   `categories_id` int NOT NULL,
   `title_path` varchar(100) DEFAULT NULL,
+  `image` longblob,
   PRIMARY KEY (`idproduct`),
   UNIQUE KEY `idproduct_UNIQUE` (`idproduct`),
   KEY `fk_product_categories_idx` (`categories_id`),
   CONSTRAINT `fk_product_categories` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +66,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Сыр Viola Бутербродный полутвердый нарезка 45% БЗМЖ 120г',1,'cheese_1.jpg'),(2,'Сыр Свежий Ряд российский нарезка 50% БЗМЖ 150г',1,'cheese_2.jpeg'),(3,'Сыр Liebendorf Гауда полутвердый нарезка БЗМЖ 150г',1,'cheese_3.jpeg'),(4,'Напиток овсяный Nemoloko шоколадный 3.2% 1л',5,'napitok-ovsyanyy.jpg'),(5,'Напиток овсяный Nemoloko классический 3.2% 1л',5,'Nemoloko_1L.jpg'),(6,'Лед Завод Льда пищевой 1кг',4,NULL),(7,'Пломбир Золотой Стандарт С Таежной Черникой с черничным наполнителем в вафельном стаканчике 12% БЗМЖ 93г',4,NULL),(8,'Бекон Мясная Ферма сырокопченый 150г',3,'2355319_51712017.jpeg'),(9,'Колбаса Черкизово Сальчичон сырокопченая нарезка 100г',3,'17a30a6bf4add77ac76f83b247bd9922.w700h700.jpeg'),(10,'Тушка цыпленка охлажденная',2,'e852b61256a784e57ea92105b1355131.jpg'),(11,'Филе куриное охлажденное',2,'4b06ee9a489cebf9ef15956b12787717.jpg');
+INSERT INTO `product` VALUES (1,'Сыр Viola Бутербродный полутвердый нарезка 45% БЗМЖ 120г',1,'\\Resources\\cheese_1.jpg',NULL),(2,'Сыр Свежий Ряд российский нарезка 50% БЗМЖ 150г',1,'\\Resources\\cheese_2.jpeg',NULL),(3,'Сыр Liebendorf Гауда полутвердый нарезка БЗМЖ 150г',1,'\\Resources\\cheese_3.jpeg',NULL),(4,'Напиток овсяный Nemoloko шоколадный 3.2% 1л',5,'\\Resources\\napitok-ovsyanyy.jpg',NULL),(5,'Напиток овсяный Nemoloko классический 3.2% 1л',5,'\\Resources\\Nemoloko_1L.jpg',NULL),(6,'Лед Завод Льда пищевой 1кг',4,'\\Resources\\no_images.png',NULL),(7,'Пломбир Золотой Стандарт С Таежной Черникой с черничным наполнителем в вафельном стаканчике 12% БЗМЖ 93г',4,'\\Resources\\no_images.png',NULL),(8,'Бекон Мясная Ферма сырокопченый 150г',3,'\\Resources\\2355319_51712017.jpeg',NULL),(9,'Колбаса Черкизово Сальчичон сырокопченая нарезка 100г',3,'\\Resources\\17a30a6bf4add77ac76f83b247bd9922.w700h700.jpeg',NULL),(10,'Тушка цыпленка охлажденная',2,'\\Resources\\e852b61256a784e57ea92105b1355131.jpg',NULL),(11,'Филе куриное охлажденное',2,'\\Resources\\4b06ee9a489cebf9ef15956b12787717.jpg',NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-10 13:09:40
+-- Dump completed on 2024-12-14 11:29:17

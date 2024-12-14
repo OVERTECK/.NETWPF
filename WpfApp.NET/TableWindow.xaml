@@ -23,12 +23,13 @@
                 Text="Фильтрация категории"
                 FontSize="15"></TextBlock>
             <ComboBox
-                Name="comboBoxFilter"
+                Name="ComboBoxFilter"
                 Margin="20 0 0 0"
                 Width="150"
                 Height="30" 
                 Initialized="ComboBox_Initialized" 
                 SelectionChanged="comboBoxFilter_SelectionChanged"
+                DisplayMemberPath="Title"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"/>
             
@@ -58,18 +59,28 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Image
-                            Stretch="Uniform"
-                            Grid.Row="0"
-                            Width="100"
-                            Height="90"
-                            Margin="5">
-                                <Image.Source>
+                                Stretch="Uniform"
+                                Grid.Row="0"
+                                Width="100"
+                                Height="90"
+                                Margin="5"
+                                Source="{Binding Path=TitlePath}">
+                                <!--<Image.Source>
                                     <Binding Path="TitlePath">
                                         <Binding.TargetNullValue>
                                             <ImageSource>Resources/no_images.png</ImageSource>
                                         </Binding.TargetNullValue>
                                     </Binding>
-                                </Image.Source>
+                                </Image.Source>-->
+                            </Image>
+                            
+                            <Image
+                                Stretch="Uniform"
+                                Grid.Row="0"
+                                Width="100"
+                                Height="90"
+                                Margin="5"
+                                Source="{Binding Path=Image}">
                             </Image>
                             <TextBlock
                             Grid.Row="1"

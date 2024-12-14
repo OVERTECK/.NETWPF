@@ -20,13 +20,14 @@ namespace Pract_3
             {
                 var searchedProducts = Db1Context.GetContext()
                     .Products
-                    .AsNoTracking()
                     .ToList();
 
                 foreach (var item in searchedProducts)
                 {
-                    if (item.TitlePath != null)
-                        item.TitlePath = @"\Resources\" + item.TitlePath;
+                    if (item.TitlePath == null && item.Image == null)
+                    {
+                        item.TitlePath = @"\Resources\no_images.png";
+                    }
                 }
 
                 listView.ItemsSource = searchedProducts;
@@ -80,18 +81,16 @@ namespace Pract_3
         {
             try
             {
-                comboBoxFilter.SelectedIndex = 0;
+                ComboBoxFilter.SelectedIndex = 0;
 
-                var categList = new List<String> { "Не фильтровать" };
+                var defaultCategories = new List<Category> { new Category { Title = "Не фильтровать" }};
 
                 var searchedCategories = Db1Context.GetContext()
                     .Categories
                     .OrderByDescending(c => c.Title)
-                    .Select(c => c.Title)
                     .ToList();
 
-                comboBoxFilter.ItemsSource = categList.Union(searchedCategories);
-
+                ComboBoxFilter.ItemsSource = defaultCategories.Union(searchedCategories);
             }
             catch (Exception ex)
             {
@@ -101,12 +100,10 @@ namespace Pract_3
 
         private void comboBoxFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string? selectString = comboBoxFilter.SelectedValue.ToString();
-
             if (listView is null)
                 return;
 
-            if (comboBoxFilter.SelectedIndex == 0)
+            if (ComboBoxFilter.SelectedIndex == 0)
             {
                 fillListBox(listView);
 
@@ -115,44 +112,20 @@ namespace Pract_3
 
             try
             {
-                //myConnection.Open();
-
-                //var command = new MySqlCommand("SELECT categories.title, product.title, title_path " +
-                //                               "FROM db_1.product " +
-                //                               "INNER JOIN db_1.categories " +
-                //                               "ON product.categories_id = categories.id " +
-                //                               "WHERE categories.title = @selectString", myConnection);
-
-                //command.Parameters.AddWithValue("@selectString", selectString);
-
-                //var categList = new List<Product> { };
-
-                //using (MySqlDataReader reader = command.ExecuteReader())
-                //{
-                //    while (reader.Read())
-                //    {
-                //        string categoriesTitle = Convert.ToString(reader[0]);
-
-                //        string title = Convert.ToString(reader[1]);
-
-                //        string titlePath = @"D:\Projects\C#\Tasks\WpfApp1\Pract_3\Resources\" + Convert.ToString(reader[2]);
-
-                //        categList.Add(new Product() { title = title, categoriesTitle = categoriesTitle, titlePath = titlePath});
-                //    }
-                //}
-
-                var CategoryId = Db1Context.GetContext().Categories.Where(c => c.Title == selectString).Select(c => c.Id).First();
-
+                var selectedCategories = ComboBoxFilter.SelectedItem as Category;
+                
                 var searchedProducts = Db1Context.GetContext()
                     .Products
-                    .Where(c => c.CategoriesId == CategoryId)
-                    .Select(c => new Product
-                    {
-                        Title = c.Title,
-                        TitlePath = "/Resources/" + c.TitlePath,
-                        CategoriesId = c.CategoriesId
-                    }).ToList();
+                    .Where(c => c.CategoriesId == selectedCategories.Id)
+                    .ToList();
 
+                foreach (var item in searchedProducts)
+                {
+                    if (item.TitlePath == null && item.Image == null)
+                    {
+                        item.TitlePath = @"\Resources\no_images.png";
+                    }
+                }
 
                 listView.ItemsSource = searchedProducts;
             }

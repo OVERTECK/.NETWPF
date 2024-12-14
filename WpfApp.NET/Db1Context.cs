@@ -9,11 +9,6 @@ public partial class Db1Context : DbContext
 {
     private static Db1Context _context = null!;
 
-    public Db1Context()
-    {
-        
-    }
-
     public static Db1Context GetContext()
     {
         if (_context == null)
@@ -26,6 +21,9 @@ public partial class Db1Context : DbContext
         return _context;
     }
 
+    public Db1Context()
+    {
+    }
 
     public Db1Context(DbContextOptions<Db1Context> options)
         : base(options)
@@ -39,6 +37,7 @@ public partial class Db1Context : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=db_1", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.37-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -73,6 +72,7 @@ public partial class Db1Context : DbContext
 
             entity.Property(e => e.Idproduct).HasColumnName("idproduct");
             entity.Property(e => e.CategoriesId).HasColumnName("categories_id");
+            entity.Property(e => e.Image).HasColumnName("image");
             entity.Property(e => e.Title)
                 .HasMaxLength(200)
                 .HasColumnName("title");

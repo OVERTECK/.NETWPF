@@ -1,0 +1,64 @@
+﻿<Window x:Class="WpfApp.NET.GeneratingReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp.NET"
+        mc:Ignorable="d"
+        Title="GeneratingReportWindow" Height="300" Width="400"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".06*"></RowDefinition>
+            <RowDefinition Height=".2*"></RowDefinition>
+            <RowDefinition Height=".07*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border
+            Background="Gray">
+            <TextBlock
+                FontSize="25"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                Формирование отчета Excel
+            </TextBlock>
+        </Border>
+
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock
+                FontSize="20"
+                Margin="15">
+                Укажите папку для сохранения файла
+            </TextBlock>
+            <Button
+                FontSize="15" Click="Button_Click">
+                Указать папку
+            </Button>
+
+            <TextBlock
+                FontSize="15">
+                Путь: 
+            </TextBlock>
+
+            <TextBlock
+                Name="textBlockPath"
+                FontSize="15">
+                
+            </TextBlock>
+        </StackPanel>
+
+        <Button
+            Grid.Row="2"
+            FontSize="20"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Height="35"
+            Width="170" Click="Button_Click_1">
+            Сформировать
+        </Button>
+    </Grid>
+</Window>

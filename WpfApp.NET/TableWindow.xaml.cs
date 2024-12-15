@@ -134,5 +134,14 @@ namespace Pract_3
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var generatingReportWindow = new GeneratingReportWindow();
+
+            generatingReportWindow.Owner = this;
+
+            generatingReportWindow.ShowDialog();
+        }
     }
 }

@@ -45,6 +45,13 @@ namespace WpfApp.NET
         {
             try
             {
+                if (textBlockPath.Text == "")
+                {
+                    MessageBox.Show("Указажите папку для сохранения!");
+
+                    return;
+                }
+
                 var wb = new XLWorkbook();
 
                 var sh = wb.Worksheets.Add("Products");
@@ -53,12 +60,16 @@ namespace WpfApp.NET
 
                 var countSearchedProducts = searchedProducts.Count();
 
-                for (int i = 0; i < countSearchedProducts; i++)
+                int index = 1;
+
+                foreach (var product in searchedProducts)
                 {
-                    sh.Cell(i + 1, 1).SetValue(searchedProducts[i].Idproduct);
-                    sh.Cell(i + 1, 2).SetValue(searchedProducts[i].Title);
-                    sh.Cell(i + 1, 3).SetValue(searchedProducts[i].Categories.Title);
-                    sh.Cell(i + 1, 4).SetValue(searchedProducts[i].TitlePath);
+                    sh.Cell(index, 1).SetValue(product.Idproduct);
+                    sh.Cell(index, 2).SetValue(product.Title);
+                    sh.Cell(index, 3).SetValue(product.Categories.Title);
+                    sh.Cell(index, 4).SetValue(product.TitlePath);
+
+                    index += 1;
                 }
 
                 wb.SaveAs(textBlockPath.Text);

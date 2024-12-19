@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp.NET", "WpfApp.NET\WpfApp.NET.csproj", "{349339C5-8C9D-4F98-953D-0642CF1CF551}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currencies", "Currencies\Currencies.csproj", "{23D928E9-493D-4044-9826-B7C059234DF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{349339C5-8C9D-4F98-953D-0642CF1CF551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{349339C5-8C9D-4F98-953D-0642CF1CF551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{349339C5-8C9D-4F98-953D-0642CF1CF551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D928E9-493D-4044-9826-B7C059234DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D928E9-493D-4044-9826-B7C059234DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D928E9-493D-4044-9826-B7C059234DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D928E9-493D-4044-9826-B7C059234DF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
